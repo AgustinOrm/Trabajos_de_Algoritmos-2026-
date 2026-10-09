@@ -1,7 +1,4 @@
-# CAMBIO 1 (modificado): por_nivel necesita el TDA Cola (Cola, arribo,
-# atencion y cola_vacia). En lugar de la cola mínima que se había agregado
-# antes, ahora se importan desde el archivo tda_Cola.py, que debe estar en
-# la misma carpeta que este archivo.
+# Por_nivel necesita el TDA Cola (Cola, arribo, atencion y cola_vacia). 
 from tda_Cola import Cola, arribo, atencion, cola_vacia
 
 
@@ -30,7 +27,6 @@ def eliminar_nodo(raiz, clave):
             elif(raiz.der is None):
                 raiz = raiz.izq
             else:
-                # CAMBIO 3: la función "remplazar" ahora se llama "reemplazar".
                 raiz.izq, aux = reemplazar(raiz.izq)
                 raiz.info = aux.info
     return raiz, x
@@ -47,14 +43,11 @@ def insertar_nodo(raiz, dato):
     return raiz
 
 
-# CAMBIO 2: la función "arbolvacio" ahora se llama "arbol_vacio".
 def arbol_vacio(raiz):
     """Devuelve true si el árbol esta vacio."""
     return raiz is None
 
 
-# CAMBIO 3: la función "remplazar" ahora se llama "reemplazar" (también en
-# su llamada recursiva y en la llamada desde eliminar_nodo).
 def reemplazar(raiz):
     """Determina el nodo que remplazará al que se elimina."""
     aux = None
@@ -67,8 +60,8 @@ def reemplazar(raiz):
 
 
 def por_nivel(raiz):
-    # CAMBIO 2 (corregido): el docstring original decía "barrido postorden",
-    # pero esta función hace el barrido por nivel (usando una cola).
+    # El docstring original decía "barrido postorden", pero esta función hace el barrido 
+    # por nivel (usando una cola).
     """Realiza el barrido por nivel del árbol."""
     pendientes = Cola()
     arribo(pendientes, raiz)

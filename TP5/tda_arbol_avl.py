@@ -1,15 +1,12 @@
-# CAMBIO 1 (agregado): se importa el TDA Cola (tda_Cola.py, misma carpeta)
-# porque por_nivel lo necesita.
+# Se importa el TDA Cola porque por_nivel lo necesita.
 from tda_Cola import Cola, arribo, atencion, cola_vacia
 
 
 class nodoArbol(object):
     """Clase nodo árbol."""
 
-    # CAMBIO 2 (modificado): el nodo original solo recibía "info", pero
-    # insertar_nodo lo llamaba como nodoArbol(dato, pos) y eliminar_nodo usa
-    # el campo "nrr". Se agrega el parámetro opcional "nrr" y el campo
-    # self.nrr (número relativo de registro, mencionado en el capítulo).
+    # El nodo original solo recibía "info", pero insertar_nodo lo llamaba como nodoArbol(dato, pos) 
+    # y eliminar_nodo usa el campo "nrr". Se agrega el parámetro opcional "nrr" y el campo self.nrr
     def __init__(self, info, nrr=None):
         """Crea un nodo con la información cargada."""
         self.izq = None
@@ -78,9 +75,7 @@ def balancear(raiz):
     return raiz
 
 
-# CAMBIO 3 (modificado): "pos" ahora es opcional (pos=None). En el ejemplo
-# de la figura 33 se llama insertar_nodo(raiz, pais) con solo dos argumentos,
-# lo que fallaba con la firma original (raiz, dato, pos).
+
 def insertar_nodo(raiz, dato, pos=None):
     """Inserta un dato al árbol."""
     if(raiz is None):
@@ -109,8 +104,6 @@ def eliminar_nodo(raiz, clave):
             elif(raiz.der is None):
                 raiz = raiz.izq
             else:
-                # CAMBIO 4: se llama a "reemplazar" (antes "remplazar"),
-                # igual que en tda_Arbol.py.
                 raiz.izq, aux = reemplazar(raiz.izq)
                 raiz.info, raiz.nrr = aux.info, aux.nrr
     raiz = balancear(raiz)
@@ -118,12 +111,9 @@ def eliminar_nodo(raiz, clave):
     return raiz, x
 
 
-# CAMBIO 5 (agregado): el libro no muestra "reemplazar" en la parte AVL,
-# pero eliminar_nodo la necesita. Se toma la del árbol binario de búsqueda
-# (tda_Arbol.py). Además, en su rama recursiva se agregan balancear y
-# actualizaraltura: sin esto, al quitar la hoja mayor del subárbol izquierdo
-# las alturas de los nodos del camino quedaban desactualizadas y el árbol
-# podía desbalancearse.
+# En su rama recursiva se agregan balancear y actualizaraltura: sin esto, al quitar 
+# la hoja mayor del subárbol izquierdo las alturas de los nodos del camino quedaban 
+# desactualizadas y el árbol podía desbalancearse.
 def reemplazar(raiz):
     """Determina el nodo que remplazará al que se elimina."""
     aux = None
@@ -137,9 +127,7 @@ def reemplazar(raiz):
     return raiz, aux
 
 
-# CAMBIO 6 (agregado): el ejemplo de la figura 33 importa "buscar" e
-# "inorden" de este módulo, por lo que se incluyen estas funciones (y el
-# resto de los eventos del TDA) tal cual están en tda_Arbol.py.
+
 def arbol_vacio(raiz):
     """Devuelve true si el árbol esta vacio."""
     return raiz is None
@@ -183,8 +171,6 @@ def postorden(raiz):
 
 
 def por_nivel(raiz):
-    # (mismo ajuste que en tda_Arbol.py: el docstring original decía
-    # "postorden", pero la función hace el barrido por nivel.)
     """Realiza el barrido por nivel del árbol."""
     pendientes = Cola()
     arribo(pendientes, raiz)
