@@ -5,8 +5,6 @@ from tda_Cola import Cola, arribo, atencion, cola_vacia
 class nodoArbol(object):
     """Clase nodo árbol."""
 
-    # El nodo original solo recibía "info", pero insertar_nodo lo llamaba como nodoArbol(dato, pos) 
-    # y eliminar_nodo usa el campo "nrr". Se agrega el parámetro opcional "nrr" y el campo self.nrr
     def __init__(self, info, nrr=None):
         """Crea un nodo con la información cargada."""
         self.izq = None
@@ -111,9 +109,6 @@ def eliminar_nodo(raiz, clave):
     return raiz, x
 
 
-# En su rama recursiva se agregan balancear y actualizaraltura: sin esto, al quitar 
-# la hoja mayor del subárbol izquierdo las alturas de los nodos del camino quedaban 
-# desactualizadas y el árbol podía desbalancearse.
 def reemplazar(raiz):
     """Determina el nodo que remplazará al que se elimina."""
     aux = None
