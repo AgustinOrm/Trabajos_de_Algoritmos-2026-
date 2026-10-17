@@ -60,8 +60,6 @@ def reemplazar(raiz):
 
 
 def por_nivel(raiz):
-    # El docstring original decía "barrido postorden", pero esta función hace el barrido 
-    # por nivel (usando una cola).
     """Realiza el barrido por nivel del árbol."""
     pendientes = Cola()
     arribo(pendientes, raiz)
